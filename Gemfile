@@ -1,18 +1,17 @@
 source 'https://rubygems.org'
-ruby "2.3.0"
+ruby "2.3.1"
 
-gem 'aws-sdk', '>= 2.0.0'
+gem 'rails', '>= 5.0.0.1', '< 5.1'
+gem 'aws-sdk'
 gem 'delayed_job_active_record'
-gem 'jwt', '~> 1.5', '>= 1.5.2'
-gem 'puma', '~> 3.4'
-gem 'rails', '>= 5.0.0.beta3', '< 5.1'
-gem 'pg', '~> 0.18.4'
-gem 'rack-cors', '~> 0.4.0', :require => 'rack/cors'
-gem 'kaminari', '~> 0.17.0'
+gem 'jwt'
+gem 'puma'
+gem 'pg'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'kaminari'
 
 group :development, :test do
   gem 'curb'
-  gem 'dotenv-rails', github: "bkeepers/dotenv"
   gem "pry-rails"
 end
 

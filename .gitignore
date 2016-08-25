@@ -1,0 +1,16 @@
+!/log/.keep
+!/tmp/.keep
+.byebug_history
+!.keep
+*.DS_Store
+*.swo
+*.swp
+/.bundle
+/.env
+/coverage/*
+/db/*.sqlite3
+/log/*
+/public/system
+/public/assets
+/tags
+/tmp/*

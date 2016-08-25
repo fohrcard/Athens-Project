@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.3.1"
+ruby '2.3.1'
 
 gem 'rails', '>= 5.0.0.1', '< 5.1'
 gem 'aws-sdk'
@@ -9,10 +9,11 @@ gem 'puma'
 gem 'pg'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'
+gem 'figaro'
 
 group :development, :test do
   gem 'curb'
-  gem "pry-rails"
+  gem 'pry-rails'
 end
 
 group :development do
@@ -20,6 +21,6 @@ group :development do
 end
 
 group :production do
-  gem "rack-timeout"
-  gem "rails_12factor"
+  gem 'rack-timeout'
+  gem 'rails_12factor'
 end

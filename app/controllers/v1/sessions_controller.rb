@@ -1,8 +1,8 @@
-class V1::SessionsController << ApplicationController
+class V1::SessionsController < V1::ApplicationController
   def create
     user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
     if user.present?
-      render json: payload(user)
+      render json: payload(user), status: 200
     else
       render json: {errors: ['Invalid Username/Password']}, status: :unauthorized
     end

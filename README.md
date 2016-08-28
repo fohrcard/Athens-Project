@@ -9,9 +9,9 @@ error: `{error_type: "error type", error_message: "some error description"}, sta
 #### Register/Sign Up
 *Route* `POST /signup`  
 *Params* `email=some@example.com&password=secret123`  
-*Response* ``{code: 200, token: "asldkjfalksdf.asfdasdlf.asdflksdjllk"}``  
+*Response* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user: {...}}``  
 
 #### Sessions/Sign In
 *Route* `POST /login`  
 *Params* `email=some@example.com&password=secret123`  
-*Response* ``{code: 200, token: "asldkjfalksdf.asfdasdlf.asdflksdjllk"}``
+*Response* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user: {...}}``

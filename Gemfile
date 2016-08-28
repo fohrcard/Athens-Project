@@ -10,6 +10,7 @@ gem 'pg'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'
 gem 'figaro'
+gem 'bcrypt'
 
 group :test do
   gem 'capybara'

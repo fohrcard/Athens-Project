@@ -1,8 +1,8 @@
 # API
 
 #### Api Responses
-success: `{code: 200, response..}`  
-error: `{code: 404, error_type: "error type", error_message: "some error description"}`
+success: `{response..}, status: 200`  
+error: `{error_type: "error type", error_message: "some error description"}, status: 404`
 
 ## Authentication
 

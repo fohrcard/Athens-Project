@@ -8,40 +8,49 @@ error: `{error_type: "error type", error_message: "some error description"}, sta
 
 #### Register/Sign Up
 *Route:* `POST /signup`  
-*Params:* `email=some@example.com&password=secret123&password_confirmation=secret123`  
-*Response:* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user: {...}}``  
+*Params:*
+```
+{email: [username]@athens.com,
+password: [Randomly Generated Password],  
+password_confirmation: [Randomly Generated Password],
+location: "[Country Code]",
+age: "[Age Range]",
+gender: "[Male or Female]"
+}
+```  
+*Response:* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user_response}``  
 
 #### Sessions/Sign In
 *Route:* `POST /login`  
 *Params:* `email=some@example.com&password=secret123`  
-*Response:* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user: {...}}``
+*Response:* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user_response}``
 
 
 ## Posts
 #### Create
 *Route:* `POST /post`  
 *Params:* `image_one: asdfa, image_two: asdfa`  
-*Response:* `post`
+*Response:* `post_response`
 
 #### My Posts
 *Route:* `GET /post`   
 *Params:* n/a   
-*Response:* `[post, post, post]`
+*Response:* `[post_response, post_response...]`
 
 #### Vote
 *Route:* `POST /post/id/vote/:image_number`  
 *Params:* n/a  
-*Response:* `post`
+*Response:* `post_response`
 
 #### Vote Requests
 *Route:* `GET /vote-requests`  
 *Params:* n/a   
-*Response:* `[post, post, post]`
+*Response:* `[post_response, post_response...]`
 
 #### Flag
 *Route:* `POST /post/:id/flag`  
 *Params:* n/a   
-*Response:* `post`
+*Response:* `post_response`
 
 ##### Post Response
 
@@ -72,7 +81,7 @@ error: `{error_type: "error type", error_message: "some error description"}, sta
 #### User Info
 *Route:* `GET /user`
 *Params:* n/a  
-*Response:* `user`
+*Response:* `user_response`
 
 ##### User Response
 ```

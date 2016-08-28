@@ -4,7 +4,7 @@ class V1::RegistrationsController < V1::ApplicationController
     if user.save
       render json: payload(user), status: :created
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: {error_message: user.errors}, status: :unprocessable_entity
     end
   end
 

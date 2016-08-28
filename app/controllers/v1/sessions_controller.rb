@@ -4,7 +4,7 @@ class V1::SessionsController < V1::ApplicationController
     if user.present?
       render json: payload(user), status: 200
     else
-      render json: {errors: ['Invalid Username/Password']}, status: :unauthorized
+      render json: {error_message: ['Invalid Username/Password']}, status: :unauthorized
     end
   end
 

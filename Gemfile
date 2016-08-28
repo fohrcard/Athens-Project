@@ -11,15 +11,24 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'
 gem 'figaro'
 
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem "fakeredis", :require => "fakeredis/rspec"
+end
 group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'spring-commands-rspec'
+  gem 'spring'
+  gem 'factory_girl_rails'
+  gem 'faker'
   gem 'curb'
   gem 'pry-rails'
 end
-
 group :development do
-  gem 'spring'
 end
-
 group :production do
   gem 'rack-timeout'
   gem 'rails_12factor'

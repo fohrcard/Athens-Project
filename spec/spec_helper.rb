@@ -20,8 +20,8 @@ RSpec.configure do |config|
   end
   config.full_backtrace=false
 
-  config.before(:each, type: :controller) do |example|
-    unless example.metadata[:skip_before]
+  config.before(:each) do |example|
+    unless example.metadata[:skip_before] || example.metadata[:type] == :model
       allow(controller).to receive(:authenticate_request!)
       allow(controller).to receive(:current_user) { create(:user) }
     end

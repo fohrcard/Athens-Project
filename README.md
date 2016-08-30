@@ -6,7 +6,7 @@ error: `{error_type: "error type", error_message: "some error description"}, sta
 
 ## Authentication
 
-#### Register/Sign Up
+#### Register/Sign Up - X
 *Route:* `POST /signup`  
 *Params:*
 ```
@@ -20,7 +20,7 @@ gender: "[Male or Female]"
 ```  
 *Response:* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user_response}``  
 
-#### Sessions/Sign In
+#### Sessions/Sign In - X
 *Route:* `POST /login`  
 *Params:* `email=some@example.com&password=secret123`  
 *Response:* ``{token: "asldkjfalksdf.asfdasdlf.asdflksdjllk", user_response}``

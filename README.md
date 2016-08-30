@@ -91,7 +91,6 @@ gender: "[Male or Female]"
   country: string
   gender: string
   flags: int
-  access_token: string
   karma: string
 }}
 ```

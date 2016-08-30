@@ -10,8 +10,8 @@ RSpec.describe Post, type: :model do
   it "has many images" do
     user = create(:user)
     post = create(:post, user_id: user.id)
-    create(:image, user_id: user.id, post_id: post.id)
-    create(:image, user_id: user.id, post_id: post.id)
+    create(:image, post_id: post.id)
+    create(:image, post_id: post.id)
     expect(post.images.size).to eq(2)
   end
 end

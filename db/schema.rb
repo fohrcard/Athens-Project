@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830051558) do
+ActiveRecord::Schema.define(version: 20160830052259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
     t.integer  "post_id"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_images_on_post_id", using: :btree
-    t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -43,7 +41,20 @@ ActiveRecord::Schema.define(version: 20160830051558) do
     t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_votes_on_image_id", using: :btree
+    t.index ["post_id"], name: "index_votes_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+  end
+
   add_foreign_key "images", "posts"
-  add_foreign_key "images", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "votes", "images"
+  add_foreign_key "votes", "posts"
+  add_foreign_key "votes", "users"
 end

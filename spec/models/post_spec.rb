@@ -45,4 +45,17 @@ RSpec.describe Post, type: :model do
     expect(percentage).to eq(50.0)
   end
 
+  it "renders as json with user and vote components" do
+    user = create(:user, email: "username@example.com")
+    post = create(:post, user_id: user.id)
+
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+
+    expect(post.as_json[:img1][:percentage]).to eq(50.0)
+    expect(post.as_json[:user][:name]).to eq("username")
+  end
+
 end

@@ -64,12 +64,14 @@ gender: "[Male or Female]"
   }
   img1: {
     url: string,
-    percentage: int,
+    percentage: float,
+    total: int,
     lead: boolean
   },
   img2: {
     url: string,
-    percentage: int,
+    percentage: float,
+    total: int,
     lead: boolean
   },
   overall_voters: int

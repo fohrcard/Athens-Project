@@ -55,7 +55,7 @@ gender: "[Male or Female]"
 ##### Post Response
 
 ```
-{post: {
+{
   id: int,  
   created_at: timestamp,
   user: {
@@ -73,7 +73,7 @@ gender: "[Male or Female]"
     lead: boolean
   },
   overall_voters: int
-}}
+}
 ```
 
 ## Users
@@ -85,12 +85,12 @@ gender: "[Male or Female]"
 
 ##### User Response
 ```
-{user: {
+{
   name: string
   age: string
   country: string
   gender: string
   flags: int
   karma: string
-}}
+}
 ```

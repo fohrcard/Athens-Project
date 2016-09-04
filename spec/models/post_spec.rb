@@ -28,4 +28,21 @@ RSpec.describe Post, type: :model do
     expect(post.image_one_total_votes).to eq(2)
     expect(post.image_two_total_votes).to eq(1)
   end
+
+  it "should render image vote percentage" do
+    user = create(:user)
+    post = create(:post, user_id: user.id)
+
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+
+    img = post.image_one_total_votes
+    total = post.total_votes
+
+    percentage = post.send(:build_percentage_of_vote, img, total)
+    expect(percentage).to eq(50.0)
+  end
+
 end

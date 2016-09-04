@@ -21,4 +21,8 @@ RSpec.describe User, type: :model do
     user.votes.create(post_id: post2.id, image_one: false)
     expect(user.votes.size).to eq(2)
   end
+  it "has a username" do
+    user = create(:user, email: "bestname@example.com")
+    expect(user.name).to eq("bestname")
+  end
 end

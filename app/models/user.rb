@@ -33,4 +33,12 @@ class User < ApplicationRecord
     # get the posts that are not the users own or already voted on
     Post.where.not(user_id: self.id).where.not(id: voted_post_ids).order(created_at: :desc)
   end
+
+  def self.payload(user)
+    return nil unless user and user.id
+    {
+      auth_token: JsonWebToken.encode({user_id: user.id}),
+      user: {id: user.id, email: user.email}
+    }
+  end
 end

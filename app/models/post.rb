@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :votes
 
+  validates :user_id, :image_one, :image_two, presence: true
+
   def as_json(options={})
     total_votes = self.total_votes
     img1_total = image_one_total_votes
@@ -15,13 +17,13 @@ class Post < ApplicationRecord
         name: self.user.name,
         country: self.user.country
       },
-      img1: {
+      image_one: {
         url: self.image_one,
         percentage: img1_perc,
         total: img1_total,
         lead: (img1_total > img2_total)
       },
-      img2: {
+      image_two: {
         url: self.image_two,
         percentage: img2_perc,
         total: img2_total,

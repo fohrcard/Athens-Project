@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  it "must have a user_id" do
+    expect(build(:post, user_id: nil).valid?).to eq(false)
+  end
+  it "must have a image_one" do
+    expect(build(:post, user_id: create(:user).id, image_one: nil).valid?).to eq(false)
+  end
+  it "must have a image_two" do
+    expect(build(:post, user_id: create(:user).id, image_two: nil).valid?).to eq(false)
+  end
+
   it "belongs to a user" do
     user = create(:user)
     post = create(:post, user_id: user.id)
@@ -53,7 +63,7 @@ RSpec.describe Post, type: :model do
     Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
     Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
 
-    expect(post.as_json[:img1][:percentage]).to eq(50.0)
+    expect(post.as_json[:image_one][:percentage]).to eq(50.0)
     expect(post.as_json[:user][:name]).to eq("username")
   end
 

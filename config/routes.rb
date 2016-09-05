@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     get 'test', to: "test#test"
     post 'signup', to: "registrations#create"
     post 'login', to: "sessions#create"
+    resources :users, only: :index, path: "user"
   end
 end

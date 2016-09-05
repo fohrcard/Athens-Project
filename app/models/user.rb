@@ -9,11 +9,12 @@ class User < ApplicationRecord
 
   def as_json(options={})
     {
+      id: self.id,
       name: self.name,
       age: self.age,
       country: self.country,
       gender: self.gender,
-      flags: self.flag_count,
+      flags: self.flag,
       karma: self.karma,
     }
   end

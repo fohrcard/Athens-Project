@@ -6,7 +6,7 @@ RSpec.describe V1::SessionsController, :type => :controller do
       user = create(:user, password: "secret123", password_confirmation: "secret123")
       post :create, {format: :json, params: {email: user.email, password: "secret123"}}
       expect(response).to have_http_status(200)
-      expect(json["user"]["id"]).to eq(user.id)
+      expect(json_response["user"]["id"]).to eq(user.id)
     end
     it "response with an error if no email or password is present" do
       get :create, { :format => :json }

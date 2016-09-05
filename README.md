@@ -1,10 +1,35 @@
-# API
+# Set Up
+
+```
+# Clone app
+git clone git@github.com:fohrcard/Athens-Project.git
+
+# Install Ruby
+rbenv install 2.3.1
+or
+rvm install 2.3.1
+
+# Run bundler
+bundle install
+
+# Build Database
+rails db:restart
+
+# Run tests
+rspec
+
+# Build seed data
+rails db:seed
+```
+
+
+# API Details
 
 #### Api Responses
 success: `{response..}, status: 200`  
 error: `{error_type: "error type", error_message: "some error description"}, status: 404`
 
-## Authentication
+### Authentication
 
 #### Register/Sign Up
 *Route:* `POST /signup`  
@@ -96,3 +121,7 @@ gender: "[Male or Female]"
   karma: string
 }
 ```
+
+
+# Todo
+- [ ] Before launch only show posts that have been created in the past 24 hours for user and user/requests

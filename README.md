@@ -38,14 +38,9 @@ gender: "[Male or Female]"
 *Response:* `[post_response, post_response...]`
 
 #### Vote
-*Route:* `POST /post/id/vote/:image_number`  
+*Route:* `POST /post/:id/vote/:image_number`  
 *Params:* n/a  
 *Response:* `post_response`
-
-#### Vote Requests
-*Route:* `GET /vote-requests`  
-*Params:* n/a   
-*Response:* `[post_response, post_response...]`
 
 #### Flag
 *Route:* `POST /post/:id/flag`  
@@ -84,6 +79,11 @@ gender: "[Male or Female]"
 *Route:* `GET /user`
 *Params:* n/a  
 *Response:* `user_response`
+
+#### Vote Requests
+*Route:* `GET /user/requests`  
+*Params:* n/a   
+*Response:* `[post_response, post_response...]`
 
 ##### User Response
 ```

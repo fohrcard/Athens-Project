@@ -11,8 +11,8 @@ ActiveRecord::Base.transaction do
 
   User.all.each do |user|
     posts = user.posts_to_review
-    posts[0..-3].each do |post|
-      user.votes.create!(post_id: post.id)
+    posts[0..15].each do |post|
+      user.votes.create!(post_id: post.id, image_one: [true, false].sample)
     end
   end
 end

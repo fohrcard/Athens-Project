@@ -6,8 +6,8 @@ RSpec.describe V1::RegistrationsController, :type => :controller do
       post :create, {format: :json, params: attributes_for(:user)}
       expect(response).to have_http_status(201)
       expect(response).to have_http_status(201)
-      expect(json["auth_token"].present?).to eq(true)
-      expect(json["user"].present?).to eq(true)
+      expect(json_response["auth_token"].present?).to eq(true)
+      expect(json_response["user"].present?).to eq(true)
     end
     it "response with an error if no email or password is present" do
       get :create, { :format => :json }

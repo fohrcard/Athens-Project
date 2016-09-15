@@ -1,35 +1,70 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  it "must have a user_id" do
+    expect(build(:post, user_id: nil).valid?).to eq(false)
+  end
+  it "must have a image_one" do
+    expect(build(:post, user_id: create(:user).id, image_one: nil).valid?).to eq(false)
+  end
+  it "must have a image_two" do
+    expect(build(:post, user_id: create(:user).id, image_two: nil).valid?).to eq(false)
+  end
+
   it "belongs to a user" do
     user = create(:user)
     post = create(:post, user_id: user.id)
     expect(post.user.id).to eq(user.id)
   end
-
-  it "has many images" do
+  it "has many votes" do
     user = create(:user)
+    user_two = create(:user)
     post = create(:post, user_id: user.id)
-    create(:image, post_id: post.id)
-    create(:image, post_id: post.id)
-    expect(post.images.size).to eq(2)
+    user.votes.create(post_id: post.id, image_one: true)
+    user_two.votes.create(post_id: post.id, image_one: true)
+    expect(post.votes.size).to eq(2)
   end
 
-  it "increases count of total votes for post on create" do
+  it "shows the votes breakdown" do
     user = create(:user)
     post = create(:post, user_id: user.id)
-    image = create(:image, post_id: post.id)
-    create(:vote, image_id: image.id, user_id: user.id, post_id: post.id)
-    create(:vote, image_id: image.id, user_id: user.id, post_id: post.id)
-    expect(post.total_votes).to eq(2)
+
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+
+    expect(post.total_votes).to eq(3)
+    expect(post.image_one_total_votes).to eq(2)
+    expect(post.image_two_total_votes).to eq(1)
   end
-  it "decreases count of total votes for post on destroy" do
+
+  it "should render image vote percentage" do
     user = create(:user)
     post = create(:post, user_id: user.id)
-    image = create(:image, post_id: post.id)
-    vote1 = create(:vote, image_id: image.id, user_id: user.id, post_id: post.id)
-    vote2 = create(:vote, image_id: image.id, user_id: user.id, post_id: post.id)
-    vote2.destroy
-    expect(post.total_votes).to eq(1)
+
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+
+    img = post.image_one_total_votes
+    total = post.total_votes
+
+    percentage = post.send(:build_percentage_of_vote, img, total)
+    expect(percentage).to eq(50.0)
   end
+
+  it "renders as json with user and vote components" do
+    user = create(:user, email: "username@example.com")
+    post = create(:post, user_id: user.id)
+
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: true)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+    Vote.create(user_id: create(:user).id, post_id: post.id, image_one: false)
+
+    expect(post.as_json[:image_one][:percentage]).to eq(50.0)
+    expect(post.as_json[:user][:name]).to eq("username")
+  end
+
 end

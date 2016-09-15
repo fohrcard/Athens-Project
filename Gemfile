@@ -11,6 +11,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'
 gem 'figaro'
 gem 'bcrypt'
+gem 'faker'
 
 group :test do
   gem 'capybara'
@@ -24,7 +25,6 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'spring'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'curb'
   gem 'pry-rails'
 end

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.3.0'
 
 gem 'rails', '>= 5.0.0.1', '< 5.1'
 gem 'aws-sdk'
@@ -27,8 +27,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'curb'
   gem 'pry-rails'
-end
-group :development do
 end
 group :production do
   gem 'rack-timeout'

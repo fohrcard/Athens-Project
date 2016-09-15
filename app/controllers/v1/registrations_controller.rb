@@ -1,6 +1,6 @@
 class V1::RegistrationsController < V1::ApplicationController
   def create
-    email = "#{Faker::Internet.email.split("@")[0]}@#{fohr-athens.com}"
+    email = "#{Digest::SHA1.hexdigest([Time.now, rand].join)}@fohr-athens.com"
     password = SecureRandom.urlsafe_base64
     user = User.new(email: email,
                     password: password,

@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
 
   def real_email
-    return nil self.email.include?("@fohr-athens.com")
+    return nil if self.email.include?("@fohr-athens.com")
     self.email
   end
 end

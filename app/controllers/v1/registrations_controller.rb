@@ -2,10 +2,11 @@ class V1::RegistrationsController < V1::ApplicationController
   def create
     email = "#{Digest::SHA1.hexdigest([Time.now, rand].join)}@fohr-athens.com"
     password = SecureRandom.urlsafe_base64
+    name = SecureRandom.urlsafe_base64.to_s
     user = User.new(email: email,
                     password: password,
                     password_confirmation: password,
-                    name: SecureRandom.urlsafe_base64)
+                    name: name)
 
     if user.save
       render json: User.payload(user), status: :created

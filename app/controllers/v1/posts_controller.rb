@@ -1,4 +1,6 @@
 class V1::PostsController < V1::ApplicationController
+  before_action :authenticate_request!
+  
   def index
     render json: current_user.posts.as_json, status: 200
   end
